@@ -99,15 +99,6 @@ runs:
         ssh-keyscan github.com >> ~/.ssh/known_hosts
         echo -e "Host github.com\n  IdentityFile ~/.ssh/match_ci_key\n  StrictHostKeyChecking no" >> ~/.ssh/config
 
-    - name: 🔍 Show Fastlane Input Secrets
-      run: |
-        echo "➡️ APPSTORE_KEY_ID: $APPSTORE_KEY_ID"
-        echo "➡️ APPSTORE_ISSUER_ID: $APPSTORE_ISSUER_ID"
-      shell: bash
-      env:
-        APPSTORE_KEY_ID: ${{ inputs.appstore_key_id }}
-        APPSTORE_ISSUER_ID: ${{ inputs.appstore_issuer_id }}
-
     # Inflate Firebase credentials
     - name: Inflate Secrets
       shell: bash
@@ -136,9 +127,9 @@ runs:
 
       run: |
         bundle exec fastlane ios deploy_on_firebase \
-        app_identifier:$APP_IDENTIFIER \
+        app_identifier:"$APP_IDENTIFIER" \
         git_url:"$GIT_URL" \
-        git_branch:${{ inputs.git_branch }} \
+        git_branch:"$GIT_BRANCH" \
         match_type:"$MATCH_TYPE" \
         provisioning_profile_name:"$PROVISIONING_PROFILE_NAME" \
         appstore_key_id:"$APPSTORE_KEY_ID" \
