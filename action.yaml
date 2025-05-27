@@ -99,6 +99,15 @@ runs:
         ssh-keyscan github.com >> ~/.ssh/known_hosts
         echo -e "Host github.com\n  IdentityFile ~/.ssh/match_ci_key\n  StrictHostKeyChecking no" >> ~/.ssh/config
 
+    - name: 🔍 Show Fastlane Input Secrets
+      run: |
+        echo "➡️ APPSTORE_KEY_ID: $APPSTORE_KEY_ID"
+        echo "➡️ APPSTORE_ISSUER_ID: $APPSTORE_ISSUER_ID"
+      shell: bash
+      env:
+        APPSTORE_KEY_ID: ${{ inputs.appstore_key_id }}
+        APPSTORE_ISSUER_ID: ${{ inputs.appstore_issuer_id }}
+
     # Inflate Firebase credentials
     - name: Inflate Secrets
       shell: bash
@@ -109,10 +118,6 @@ runs:
         mkdir -p secrets
         touch secrets/firebaseAppDistributionServiceCredentialsFile.json
         echo $FIREBASE_CREDS | base64 --decode > secrets/firebaseAppDistributionServiceCredentialsFile.json
-        echo "🔍 CI Debug Info:"
-        echo "➡️  APPSTORE_KEY_ID: ${{ inputs.appstore_key_id }}
-        echo "➡️  APPSTORE_ISSUER_ID: ${{ inputs.appstore_issuer_id }}
-        echo "➡️  First 30 chars of decoded AUTH_KEY:"
         echo "$AUTH_KEY" | base64 --decode > secrets/Auth_key.p8
 
     - name: Upload iOS App to Firebase Distribution
