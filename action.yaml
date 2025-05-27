@@ -135,7 +135,7 @@ runs:
         GROUPS: ${{ inputs.tester_groups }}
 
       run: bundle exec fastlane ios deploy_on_firebase \
-        app_identifier:"$APP_IDENTIFIER" \
+        app_identifier:$APP_IDENTIFIER \
         git_url:"$GIT_URL" \
         git_branch:"$GIT_BRANCH" \
         match_type:"$MATCH_TYPE" \
