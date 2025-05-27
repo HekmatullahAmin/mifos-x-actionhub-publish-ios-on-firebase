@@ -110,8 +110,8 @@ runs:
         touch secrets/firebaseAppDistributionServiceCredentialsFile.json
         echo $FIREBASE_CREDS | base64 --decode > secrets/firebaseAppDistributionServiceCredentialsFile.json
         echo "🔍 CI Debug Info:"
-        echo "➡️  APPSTORE_KEY_ID: $APPSTORE_KEY_ID"
-        echo "➡️  APPSTORE_ISSUER_ID: $APPSTORE_ISSUER_ID"
+        echo "➡️  APPSTORE_KEY_ID: ${{ inputs.appstore_key_id }}
+        echo "➡️  APPSTORE_ISSUER_ID: ${{ inputs.appstore_issuer_id }}
         echo "➡️  First 30 chars of decoded AUTH_KEY:"
         echo "$AUTH_KEY" | base64 --decode > secrets/Auth_key.p8
 
