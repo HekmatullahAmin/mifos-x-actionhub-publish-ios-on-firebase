@@ -134,7 +134,8 @@ runs:
         FIREBASE_APP_ID: ${{ inputs.firebase_app_id }}
         GROUPS: ${{ inputs.tester_groups }}
 
-      run: bundle exec fastlane ios deploy_on_firebase \
+      run: |
+        bundle exec fastlane ios deploy_on_firebase \
         app_identifier:$APP_IDENTIFIER \
         git_url:"$GIT_URL" \
         git_branch:${{ inputs.git_branch }} \
