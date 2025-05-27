@@ -137,7 +137,7 @@ runs:
         git_private_key:~/.ssh/match_ci_key \
         firebase_app_id:"$FIREBASE_APP_ID" \
         serviceCredsFile:secrets/firebaseAppDistributionServiceCredentialsFile.json \
-        key_file_path:secrets/Auth_key.p8 \
+        key_filepath:secrets/Auth_key.p8 \
         groups:"$GROUPS"
 
     - name: Upload iOS Artifact
