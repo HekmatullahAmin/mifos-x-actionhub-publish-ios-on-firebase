@@ -137,7 +137,7 @@ runs:
       run: bundle exec fastlane ios deploy_on_firebase \
         app_identifier:$APP_IDENTIFIER \
         git_url:"$GIT_URL" \
-        git_branch:"$GIT_BRANCH" \
+        git_branch:${{ inputs.git_branch }} \
         match_type:"$MATCH_TYPE" \
         provisioning_profile_name:"$PROVISIONING_PROFILE_NAME" \
         appstore_key_id:"$APPSTORE_KEY_ID" \
