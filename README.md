@@ -264,9 +264,15 @@ jobs:
 base64 -i path/to/firebase-credentials.json -o firebase-creds.txt
 ```
 
-2. Add the following secret to your GitHub repository:
+2. Encode you r `.p8` API key to base64:
+```bash
+base64 -i path/to/AuthKey_XXXXXXXXXX.p8 | pbcopy 
+```
+
+3. Add the following secret to your GitHub repository:
 
 - `FIREBASE_CREDS`: Content of firebase-creds.txt
+- `APPSTORE_AUTH_KEY`: Content of AuthKey_XXXXXXXXXX.p8
 
 ## Build Artifacts
 
